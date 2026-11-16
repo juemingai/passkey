@@ -1,0 +1,113 @@
+{
+  "extensionName": {
+    "message": "密码生成器"
+  },
+  "extensionDescription": {
+    "message": "在本地安全生成密码与 sk- API Key，一键复制，随时刷新。"
+  },
+  "tagline": {
+    "message": "一点随机，多一份安心。"
+  },
+  "localBadge": {
+    "message": "本地生成"
+  },
+  "generationType": {
+    "message": "生成类型"
+  },
+  "password": {
+    "message": "密码"
+  },
+  "apiKey": {
+    "message": "API Key"
+  },
+  "newPassword": {
+    "message": "你的新密码"
+  },
+  "newApiKey": {
+    "message": "你的新 API Key"
+  },
+  "result": {
+    "message": "生成结果"
+  },
+  "copyPassword": {
+    "message": "复制密码"
+  },
+  "copyApiKey": {
+    "message": "复制 API Key"
+  },
+  "refresh": {
+    "message": "刷新"
+  },
+  "passwordLength": {
+    "message": "密码长度"
+  },
+  "lengthSlider": {
+    "message": "密码长度滑块"
+  },
+  "characterCount": {
+    "message": "$1 位字符"
+  },
+  "includeCharacters": {
+    "message": "包含的字符"
+  },
+  "uppercase": {
+    "message": "大写字母"
+  },
+  "lowercase": {
+    "message": "小写字母"
+  },
+  "digits": {
+    "message": "数字"
+  },
+  "symbols": {
+    "message": "特殊符号"
+  },
+  "coverageNote": {
+    "message": "每种已选字符都会至少出现一次。"
+  },
+  "keepOneType": {
+    "message": "请至少保留一种字符类型。"
+  },
+  "prefix": {
+    "message": "固定前缀"
+  },
+  "randomPart": {
+    "message": "随机部分"
+  },
+  "apiNote": {
+    "message": "随机部分包含大小写字母与数字。生成后需在目标平台配置或录入才能使用。"
+  },
+  "privacyNote": {
+    "message": "只记住偏好，不保存密码或密钥"
+  },
+  "waitingSettings": {
+    "message": "等待有效设置"
+  },
+  "generationFailed": {
+    "message": "生成失败，请重新打开插件。"
+  },
+  "saveFailed": {
+    "message": "设置无法保存，本次仍可正常生成。"
+  },
+  "loadFailed": {
+    "message": "无法读取设置，已使用默认值；设置可能无法保存。"
+  },
+  "copied": {
+    "message": "已复制到剪贴板"
+  },
+  "copyFailed": {
+    "message": "复制失败，请选中结果手动复制。"
+  },
+  "invalidLength": {
+    "message": "请输入 4–128 之间的整数。"
+  },
+  "invalidTypes": {
+    "message": "字符类型设置无效。"
+  },
+  "noTypes": {
+    "message": "请至少选择一种字符类型。"
+  },
+  "documentLanguage": {
+    "message": "zh-CN"
+  }
+}

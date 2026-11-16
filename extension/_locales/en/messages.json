@@ -1,0 +1,113 @@
+{
+  "extensionName": {
+    "message": "Password Generator"
+  },
+  "extensionDescription": {
+    "message": "Generate passwords and sk- API keys locally. Copy or refresh in one click."
+  },
+  "tagline": {
+    "message": "A little random. A little safer."
+  },
+  "localBadge": {
+    "message": "On-device"
+  },
+  "generationType": {
+    "message": "Generator type"
+  },
+  "password": {
+    "message": "Password"
+  },
+  "apiKey": {
+    "message": "API Key"
+  },
+  "newPassword": {
+    "message": "Your new password"
+  },
+  "newApiKey": {
+    "message": "Your new API key"
+  },
+  "result": {
+    "message": "Generated result"
+  },
+  "copyPassword": {
+    "message": "Copy password"
+  },
+  "copyApiKey": {
+    "message": "Copy API key"
+  },
+  "refresh": {
+    "message": "Refresh"
+  },
+  "passwordLength": {
+    "message": "Password length"
+  },
+  "lengthSlider": {
+    "message": "Password length slider"
+  },
+  "characterCount": {
+    "message": "$1 characters"
+  },
+  "includeCharacters": {
+    "message": "Include characters"
+  },
+  "uppercase": {
+    "message": "Uppercase"
+  },
+  "lowercase": {
+    "message": "Lowercase"
+  },
+  "digits": {
+    "message": "Numbers"
+  },
+  "symbols": {
+    "message": "Symbols"
+  },
+  "coverageNote": {
+    "message": "Each selected type appears at least once."
+  },
+  "keepOneType": {
+    "message": "Keep at least one character type selected."
+  },
+  "prefix": {
+    "message": "Fixed prefix"
+  },
+  "randomPart": {
+    "message": "Random part"
+  },
+  "apiNote": {
+    "message": "The random part uses letters and numbers. Configure or register this key on your platform before use."
+  },
+  "privacyNote": {
+    "message": "Only preferences are saved. Never passwords or keys."
+  },
+  "waitingSettings": {
+    "message": "Check your settings"
+  },
+  "generationFailed": {
+    "message": "Generation failed. Please reopen the extension."
+  },
+  "saveFailed": {
+    "message": "Preferences could not be saved. You can still generate."
+  },
+  "loadFailed": {
+    "message": "Could not load preferences. Using defaults; saving may be unavailable."
+  },
+  "copied": {
+    "message": "Copied to clipboard"
+  },
+  "copyFailed": {
+    "message": "Copy failed. Select the result and copy manually."
+  },
+  "invalidLength": {
+    "message": "Enter a whole number from 4 to 128."
+  },
+  "invalidTypes": {
+    "message": "Invalid character type settings."
+  },
+  "noTypes": {
+    "message": "Select at least one character type."
+  },
+  "documentLanguage": {
+    "message": "en"
+  }
+}

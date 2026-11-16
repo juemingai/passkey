@@ -1,29 +1,29 @@
 <!doctype html>
-<html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>密码生成器</title><link rel="stylesheet" href="popup.css"><script type="module" src="popup.js"></script></head>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title data-i18n="extensionName">Password Generator</title><link rel="stylesheet" href="popup.css"><script type="module" src="popup.js"></script></head>
 <body>
-<header><span class="brand-icon" aria-hidden="true">✳</span><div><h1>密码生成器</h1><p>一点随机，多一份安心。</p></div><span class="local-badge">本地生成</span></header>
+<header><span class="brand-icon" aria-hidden="true">✳</span><div><h1><span data-i18n="extensionName">Password Generator</span></h1><p><span data-i18n="tagline">A little random. A little safer.</span></p></div><span class="local-badge"><span data-i18n="localBadge">On-device</span></span></header>
 <main>
-<div class="tabs" role="tablist" aria-label="生成类型">
-<button type="button" id="password-tab" role="tab" aria-selected="true" aria-controls="password-panel" data-mode="password">密码</button>
-<button type="button" id="api-tab" role="tab" aria-selected="false" aria-controls="api-panel" tabindex="-1" data-mode="api">API Key</button>
+<div class="tabs" role="tablist" aria-label="Generator type" data-i18n-aria-label="generationType">
+<button type="button" id="password-tab" role="tab" aria-selected="true" aria-controls="password-panel" data-mode="password"><span data-i18n="password">Password</span></button>
+<button type="button" id="api-tab" role="tab" aria-selected="false" aria-controls="api-panel" tabindex="-1" data-mode="api"><span data-i18n="apiKey">API Key</span></button>
 </div>
-<section class="result-section" aria-labelledby="result-label"><div class="result-heading"><span id="result-label">你的新密码</span><span id="result-meta">16 位字符</span></div>
-<div id="result" class="result" tabindex="0" aria-label="生成结果"></div>
-<div class="actions"><button id="copy" class="primary" type="button" command="--copy" commandfor="result" disabled>复制密码</button><button id="refresh" class="secondary" type="button" disabled><span aria-hidden="true">↻</span> 刷新</button></div>
+<section class="result-section" aria-labelledby="result-label"><div class="result-heading"><span id="result-label"><span data-i18n="newPassword">Your new password</span></span><span id="result-meta"></span></div>
+<div id="result" class="result" tabindex="0" aria-label="Generated result" data-i18n-aria-label="result"></div>
+<div class="actions"><button id="copy" class="primary" type="button" command="--copy" commandfor="result" disabled><span data-i18n="copyPassword">Copy password</span></button><button id="refresh" class="secondary" type="button" disabled><span aria-hidden="true">↻</span> <span data-i18n="refresh">Refresh</span></button></div>
 <p id="feedback" class="feedback" role="status" aria-live="polite"></p></section>
 <section id="password-panel" role="tabpanel" aria-labelledby="password-tab">
-<div class="length-heading"><label for="length">密码长度</label><input id="length" type="number" min="4" max="128" step="1" value="16" aria-describedby="length-error"></div>
-<input id="length-range" type="range" min="4" max="128" value="16" aria-label="密码长度滑块"><div class="range-labels"><span>4 位</span><span>128 位</span></div>
+<div class="length-heading"><label for="length"><span data-i18n="passwordLength">Password length</span></label><input id="length" type="number" min="4" max="128" step="1" value="16" aria-describedby="length-error"></div>
+<input id="length-range" type="range" min="4" max="128" value="16" aria-label="Password length slider" data-i18n-aria-label="lengthSlider"><div class="range-labels"><span><span data-i18n="characterCount" data-i18n-count="4">4 characters</span></span><span><span data-i18n="characterCount" data-i18n-count="128">128 characters</span></span></div>
 <p id="length-error" class="error" role="alert"></p>
-<fieldset><legend>包含的字符</legend><div class="options">
-<label><input type="checkbox" name="uppercase" checked><span>大写字母<small>A–Z</small></span></label>
-<label><input type="checkbox" name="lowercase" checked><span>小写字母<small>a–z</small></span></label>
-<label><input type="checkbox" name="digits" checked><span>数字<small>0–9</small></span></label>
-<label><input type="checkbox" name="symbols" checked><span>特殊符号<small>!@#$…</small></span></label>
-</div></fieldset><p id="selection-note" class="helper" role="status">每种已选字符都会至少出现一次。</p>
+<fieldset><legend><span data-i18n="includeCharacters">Include characters</span></legend><div class="options">
+<label><input type="checkbox" name="uppercase" checked><span><span data-i18n="uppercase">Uppercase</span><small>A–Z</small></span></label>
+<label><input type="checkbox" name="lowercase" checked><span><span data-i18n="lowercase">Lowercase</span><small>a–z</small></span></label>
+<label><input type="checkbox" name="digits" checked><span><span data-i18n="digits">Numbers</span><small>0–9</small></span></label>
+<label><input type="checkbox" name="symbols" checked><span><span data-i18n="symbols">Symbols</span><small>!@#$…</small></span></label>
+</div></fieldset><p id="selection-note" class="helper" role="status"><span data-i18n="coverageNote">Each selected type appears at least once.</span></p>
 </section>
-<section id="api-panel" role="tabpanel" aria-labelledby="api-tab" hidden><div class="api-rule"><span>固定前缀<b>sk-</b></span><span>随机部分<b>48 位</b></span></div><p class="helper">随机部分包含大小写字母与数字。生成后需在目标平台配置或录入才能使用。</p></section>
+<section id="api-panel" role="tabpanel" aria-labelledby="api-tab" hidden><div class="api-rule"><span><span data-i18n="prefix">Fixed prefix</span><b>sk-</b></span><span><span data-i18n="randomPart">Random part</span><b><span data-i18n="characterCount" data-i18n-count="48">48 characters</span></b></span></div><p class="helper"><span data-i18n="apiNote">The random part uses letters and numbers. Configure or register this key on your platform before use.</span></p></section>
 <p id="storage-note" class="error" role="status"></p>
-</main><footer><span aria-hidden="true">◈</span> 只记住偏好，不保存密码或密钥</footer>
+</main><footer><span aria-hidden="true">◈</span> <span data-i18n="privacyNote">Only preferences are saved. Never passwords or keys.</span></footer>
 </body></html>

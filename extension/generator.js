@@ -5,13 +5,15 @@ export const CHARSETS = Object.freeze({
   symbols: '!@#$%^&*()-_=+[]{};:,.?',
 });
 export const DEFAULT_SETTINGS = Object.freeze({length: 16, uppercase: true, lowercase: true, digits: true, symbols: true});
-export class ValidationError extends Error {}
+export class ValidationError extends Error {
+  constructor(code) { super(code); this.code = code; }
+}
 export function validateSettings(settings) {
   if (!settings || !Number.isInteger(settings.length) || settings.length < 4 || settings.length > 128) {
-    throw new ValidationError('请输入 4–128 之间的整数。');
+    throw new ValidationError('invalidLength');
   }
-  if (Object.keys(CHARSETS).some(key => typeof settings[key] !== 'boolean')) throw new ValidationError('字符类型设置无效。');
-  if (!Object.keys(CHARSETS).some(key => settings[key])) throw new ValidationError('请至少选择一种字符类型。');
+  if (Object.keys(CHARSETS).some(key => typeof settings[key] !== 'boolean')) throw new ValidationError('invalidTypes');
+  if (!Object.keys(CHARSETS).some(key => settings[key])) throw new ValidationError('noTypes');
   return settings;
 }
 // Reject the incomplete final bucket instead of introducing modulo bias.

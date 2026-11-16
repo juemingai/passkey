@@ -1,5 +1,7 @@
+import {t, localizeDocument} from './i18n.js';
 import {DEFAULT_SETTINGS, generatePassword, generateApiKey, validateSettings} from './generator.js';
 import {loadSettings, saveSettings} from './settings.js';
+localizeDocument();
 const $ = id => document.getElementById(id);
 const checkboxes = [...document.querySelectorAll('input[type=checkbox]')];
 const tabs = [...document.querySelectorAll('[role=tab]')];
@@ -31,14 +33,14 @@ function generate() {
     const options = settings();
     if (mode === 'password') validateSettings(options);
     $('result').textContent = mode === 'password' ? generatePassword(options) : generateApiKey();
-    $('result-meta').textContent = `${mode === 'password' ? options.length : 51} 位字符`;
+    $('result-meta').textContent = t('characterCount', String(mode === 'password' ? options.length : 51));
     $('copy').disabled = $('refresh').disabled = false;
   } catch (error) {
-    $('result-meta').textContent = '等待有效设置';
+    $('result-meta').textContent = t('waitingSettings');
     if (mode === 'password') {
-      $('length-error').textContent = error.message;
+      $('length-error').textContent = t(error.code || 'generationFailed');
       $('length').setAttribute('aria-invalid', 'true');
-    } else report('生成失败，请重新打开插件。', true);
+    } else report(t('generationFailed'), true);
   }
 }
 function changed() {
@@ -48,7 +50,7 @@ function changed() {
     $('length-range').value = snapshot.length;
     saveQueue = saveQueue.then(() => saveSettings(snapshot)).then(() => {
       $('storage-note').textContent = '';
-    }).catch(() => { $('storage-note').textContent = '设置无法保存，本次仍可正常生成。'; });
+    }).catch(() => { $('storage-note').textContent = t('saveFailed'); });
   } catch { /* Invalid input is shown inline and never persisted. */ }
 }
 $('length').addEventListener('input', changed);
@@ -56,10 +58,10 @@ $('length-range').addEventListener('input', () => { $('length').value = $('lengt
 checkboxes.forEach(input => input.addEventListener('change', () => {
   if (!checkboxes.some(item => item.checked)) {
     input.checked = true;
-    $('selection-note').textContent = '请至少保留一种字符类型。';
+    $('selection-note').textContent = t('keepOneType');
     return;
   }
-  $('selection-note').textContent = '每种已选字符都会至少出现一次。';
+  $('selection-note').textContent = t('coverageNote');
   changed();
 }));
 function selectTab(tab) {
@@ -67,8 +69,8 @@ function selectTab(tab) {
   tabs.forEach(item => { item.setAttribute('aria-selected', String(item === tab)); item.tabIndex = item === tab ? 0 : -1; });
   $('password-panel').hidden = mode !== 'password';
   $('api-panel').hidden = mode !== 'api';
-  $('result-label').textContent = mode === 'password' ? '你的新密码' : '你的新 API Key';
-  $('copy').textContent = mode === 'password' ? '复制密码' : '复制 API Key';
+  $('result-label').textContent = mode === 'password' ? t('newPassword') : t('newApiKey');
+  $('copy').textContent = mode === 'password' ? t('copyPassword') : t('copyApiKey');
   generate();
 }
 tabs.forEach((tab, index) => {
@@ -85,8 +87,8 @@ $('refresh').addEventListener('click', generate);
 async function copy() {
   const text = $('result').textContent;
   if (!text || $('copy').disabled) return;
-  try { await navigator.clipboard.writeText(text); report('已复制到剪贴板'); }
-  catch { report('复制失败，请选中结果手动复制。', true); }
+  try { await navigator.clipboard.writeText(text); report(t('copied')); }
+  catch { report(t('copyFailed'), true); }
 }
 if ('CommandEvent' in window) {
   document.addEventListener('command', event => { if (event.command === '--copy' && event.target === $('result')) copy(); }, true);
@@ -94,7 +96,7 @@ if ('CommandEvent' in window) {
 async function init() {
   let saved = {...DEFAULT_SETTINGS};
   try { saved = await loadSettings(); }
-  catch { $('storage-note').textContent = '无法读取设置，已使用默认值；设置可能无法保存。'; }
+  catch { $('storage-note').textContent = t('loadFailed'); }
   $('length').value = $('length-range').value = saved.length;
   checkboxes.forEach(input => { input.checked = saved[input.name]; });
   ready = true;
