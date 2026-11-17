@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="14 14 100 100" fill="none" role="img" aria-labelledby="title">
+  <title id="title">YuNuo extension icon</title>
+  <g id="base">
+    <rect x="16" y="16" width="96" height="96" rx="24" fill="#393733" stroke="#5A564F" stroke-width="1.5"/>
+  </g>
+  <g id="asterisk" stroke="#F3F1ED" stroke-width="12" stroke-linecap="round">
+    <path d="M43.5 64H84.5"/>
+    <path d="M53.75 46.247L74.25 81.753"/>
+    <path d="M74.25 46.247L53.75 81.753"/>
+  </g>
+</svg>
