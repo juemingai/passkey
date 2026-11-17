@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8">
+<style>
+html,body{margin:0}
+body{width:440px;height:280px;overflow:hidden;background:#393733;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#f3f1ed;display:flex;flex-direction:column;justify-content:center;padding:0 40px;box-sizing:border-box}
+.row{display:flex;align-items:center;gap:16px}
+img{width:92px;height:92px;margin:-14px;background:transparent}
+.name{font-size:40px;font-weight:700;letter-spacing:.5px}
+p{margin:24px 0 0;font-size:19px;line-height:1.45;color:#d9d4cb}
+.tag{display:inline-block;margin-top:16px;font-size:13px;color:#e0a77a;border:1px solid #6b665e;border-radius:20px;padding:4px 11px}
+</style>
+<div class="row"><img src="icon.svg" alt=""><span class="name">YuNuo</span></div>
+<p id="p"></p><div><span class="tag" id="t"></span></div>
+<script>
+const lang = new URLSearchParams(location.search).get('lang');
+const c = {en: ['Passwords &amp; API keys, generated locally.', 'On-device · No network'], zh_CN: ['在本地生成密码与 API Key', '本地生成 · 不联网']}[lang];
+document.getElementById('p').innerHTML = c[0]; document.getElementById('t').textContent = c[1];
+</script>

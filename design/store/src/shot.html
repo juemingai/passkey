@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8">
+<style>
+html,body{margin:0}
+body{width:1280px;height:800px;overflow:hidden;background:#ebe7e0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#393733;display:flex;align-items:center}
+.copy{width:560px;padding-left:110px;box-sizing:content-box}
+.brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:650;letter-spacing:.3px}
+.brand img{width:56px;height:56px;margin:-8px}
+h1{font-size:46px;line-height:1.22;font-weight:700;margin:34px 0 30px;letter-spacing:-.3px}
+ul{list-style:none;margin:0;padding:0;font-size:21px;line-height:1.5;color:#57524b}
+li{display:flex;gap:12px;margin-bottom:14px}
+li:before{content:"✳";color:#b9733f;font-size:17px;line-height:31px}
+.stage{flex:1;display:flex;justify-content:center;align-items:center;height:800px}
+.frame{border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(57,55,51,.22),0 0 0 1px rgba(57,55,51,.08);transform-origin:center}
+iframe{border:0;width:380px;display:block}
+</style>
+<div class="copy"><div class="brand"><img src="icon.svg" alt="">YuNuo</div><h1 id="h"></h1><ul id="list"></ul></div>
+<div class="stage"><div class="frame" id="frame"><iframe id="pop" scrolling="no"></iframe></div></div>
+<script>
+const p = new URLSearchParams(location.search), lang = p.get('lang'), mode = p.get('mode');
+const copy = {
+  en: {password: ['Strong passwords,<br>generated on your device', ['4–128 characters with any mix of letters, numbers and symbols', 'Cryptographically secure randomness from Web Crypto', 'No network requests. Results are never saved']],
+       api: ['One-click API keys<br>in sk- format', ['sk- prefix plus 48 random letters and numbers', 'Copy or refresh instantly', 'Only your preferences are stored, never your keys']]},
+  zh_CN: {password: ['在本地生成<br>高强度密码', ['4–128 位，大小写、数字、符号自由组合', '基于 Web Crypto 的安全随机数', '不发送网络请求，不保存生成结果']],
+          api: ['一键生成<br>sk- 格式 API Key', ['sk- 前缀加 48 位随机字母与数字', '一键复制，随时刷新', '只保存偏好设置，从不保存密钥']]}
+}[lang][mode];
+document.getElementById('h').innerHTML = copy[0];
+document.getElementById('list').innerHTML = copy[1].map(s => `<li>${s}</li>`).join('');
+const pop = document.getElementById('pop');
+pop.src = `ext/popup.html?lang=${lang}&mode=${mode}`;
+pop.onload = () => setTimeout(() => {
+  const h = pop.contentDocument.documentElement.scrollHeight;
+  pop.style.height = h + 'px';
+  document.getElementById('frame').style.transform = `scale(${Math.min(1.25, 700 / h).toFixed(3)})`;
+}, 300);
+</script>
