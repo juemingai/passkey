@@ -60,6 +60,10 @@ Manifest V3，原生 HTML/CSS/ES Modules。随机源为 Web Crypto `crypto.getRa
 
 `design/icons/` 存放各尺寸图标的 SVG 源文件，`extension/icons/` 中的 PNG 由其按原尺寸导出。128 保留四周 16px 透明边距（商店规范）；48、32、16 裁掉边距并加粗星号笔画，保证小尺寸可辨认。修改图标时先改 SVG，再重新导出对应 PNG。
 
+## 打包上架
+
+运行 `npm run package`：先跑全部测试，通过后把 `extension/` 目录内容打包为 `dist/yunuo-<版本号>.zip`（`manifest.json` 位于压缩包根目录，自动排除 `.DS_Store` 等隐藏文件），用于上传 Chrome 应用商店。版本号取自 `extension/manifest.json`，每次上传新版本前需先递增。`dist/` 不纳入版本控制。
+
 ## 商店素材
 
 `design/store/` 存放 Chrome 应用商店素材，中英文各一套：截图 `screenshot-<语言>-<模式>.png`（1280×800）和宣传小图 `promo-small-<语言>.png`（440×280）。截图中的弹窗是插件真实页面，文案和排版在 `design/store/src/`。界面或文案修改后，在 macOS 上运行 `sh design/store/build.sh` 重新导出（需要 Google Chrome 和 Python 3）。

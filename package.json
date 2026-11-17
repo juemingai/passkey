@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "package": "npm test && sh scripts/package.sh"
   },
   "engines": {
     "node": ">=20"
