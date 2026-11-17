@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {CHARSETS, DEFAULT_SETTINGS, ValidationError, generatePassword, generateApiKey} from '../extension/generator.js';
+import {CHARSETS, DEFAULT_SETTINGS, MAX_LENGTH, MIN_LENGTH, ValidationError, generatePassword, generateApiKey, stepLength} from '../extension/generator.js';
 import {cleanSettings, loadSettings, saveSettings} from '../extension/settings.js';
 const keys = Object.keys(CHARSETS);
 for (let mask = 1; mask < 16; mask++) {
@@ -58,4 +58,17 @@ test('存储适配器只读写设置并传递存储失败', async () => {
   chrome.storage.local.get = async () => { throw new Error('unavailable'); };
   await assert.rejects(loadSettings(), /unavailable/);
   delete globalThis.chrome;
+});
+test('加减按钮按 1 调整长度并限制在 4–128', () => {
+  assert.equal(MIN_LENGTH, 4);
+  assert.equal(MAX_LENGTH, 128);
+  assert.equal(stepLength(16, 16, 1), 17);
+  assert.equal(stepLength(16, 16, -1), 15);
+  assert.equal(stepLength(4, 4, -1), 4);
+  assert.equal(stepLength(128, 128, 1), 128);
+  assert.equal(stepLength(3, 16, 1), 4);
+  assert.equal(stepLength(129, 16, -1), 128);
+  assert.equal(stepLength(500, 16, 1), 128);
+  assert.equal(stepLength(NaN, 20, 1), 21);
+  assert.equal(stepLength(5.5, 20, -1), 19);
 });

@@ -13,7 +13,7 @@
 <div class="actions"><button id="copy" class="primary" type="button" command="--copy" commandfor="result" disabled><span data-i18n="copyPassword">Copy password</span></button><button id="refresh" class="secondary" type="button" disabled><span aria-hidden="true">↻</span> <span data-i18n="refresh">Refresh</span></button></div>
 <p id="feedback" class="feedback" role="status" aria-live="polite"></p></section>
 <section id="password-panel" role="tabpanel" aria-labelledby="password-tab">
-<div class="length-heading"><label for="length"><span data-i18n="passwordLength">Password length</span></label><input id="length" type="number" min="4" max="128" step="1" value="16" aria-describedby="length-error"></div>
+<div class="length-heading"><label for="length"><span data-i18n="passwordLength">Password length</span></label><div class="stepper"><button type="button" id="length-down" class="step" aria-controls="length" aria-label="Decrease length" data-i18n-aria-label="decreaseLength">−</button><input id="length" type="number" min="4" max="128" step="1" value="16" aria-describedby="length-error"><button type="button" id="length-up" class="step" aria-controls="length" aria-label="Increase length" data-i18n-aria-label="increaseLength">+</button></div></div>
 <input id="length-range" type="range" min="4" max="128" value="16" aria-label="Password length slider" data-i18n-aria-label="lengthSlider"><div class="range-labels"><span><span data-i18n="characterCount" data-i18n-count="4">4 characters</span></span><span><span data-i18n="characterCount" data-i18n-count="128">128 characters</span></span></div>
 <p id="length-error" class="error" role="alert"></p>
 <fieldset><legend><span data-i18n="includeCharacters">Include characters</span></legend><div class="options">

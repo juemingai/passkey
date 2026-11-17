@@ -44,6 +44,12 @@
   "passwordLength": {
     "message": "密码长度"
   },
+  "decreaseLength": {
+    "message": "减少长度"
+  },
+  "increaseLength": {
+    "message": "增加长度"
+  },
   "lengthSlider": {
     "message": "密码长度滑块"
   },

@@ -5,11 +5,18 @@ export const CHARSETS = Object.freeze({
   symbols: '!@#$%^&*()-_=+[]{};:,.?',
 });
 export const DEFAULT_SETTINGS = Object.freeze({length: 16, uppercase: true, lowercase: true, digits: true, symbols: true});
+export const MIN_LENGTH = 4;
+export const MAX_LENGTH = 128;
 export class ValidationError extends Error {
   constructor(code) { super(code); this.code = code; }
 }
+// Step from the typed length when it is an integer, otherwise from the last valid length; always stay in range.
+export function stepLength(current, fallback, delta) {
+  const base = Number.isInteger(current) ? current : fallback;
+  return Math.min(MAX_LENGTH, Math.max(MIN_LENGTH, base + delta));
+}
 export function validateSettings(settings) {
-  if (!settings || !Number.isInteger(settings.length) || settings.length < 4 || settings.length > 128) {
+  if (!settings || !Number.isInteger(settings.length) || settings.length < MIN_LENGTH || settings.length > MAX_LENGTH) {
     throw new ValidationError('invalidLength');
   }
   if (Object.keys(CHARSETS).some(key => typeof settings[key] !== 'boolean')) throw new ValidationError('invalidTypes');

@@ -44,6 +44,12 @@
   "passwordLength": {
     "message": "Password length"
   },
+  "decreaseLength": {
+    "message": "Decrease length"
+  },
+  "increaseLength": {
+    "message": "Increase length"
+  },
   "lengthSlider": {
     "message": "Password length slider"
   },

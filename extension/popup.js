@@ -1,5 +1,5 @@
 import {t, localizeDocument} from './i18n.js';
-import {DEFAULT_SETTINGS, generatePassword, generateApiKey, validateSettings} from './generator.js';
+import {DEFAULT_SETTINGS, MIN_LENGTH, MAX_LENGTH, generatePassword, generateApiKey, stepLength, validateSettings} from './generator.js';
 import {loadSettings, saveSettings} from './settings.js';
 localizeDocument();
 const $ = id => document.getElementById(id);
@@ -43,7 +43,13 @@ function generate() {
     } else report(t('generationFailed'), true);
   }
 }
+function updateSteppers() {
+  const length = $('length').valueAsNumber;
+  $('length-down').setAttribute('aria-disabled', String(length <= MIN_LENGTH));
+  $('length-up').setAttribute('aria-disabled', String(length >= MAX_LENGTH));
+}
 function changed() {
+  updateSteppers();
   generate();
   try {
     const snapshot = {...validateSettings(settings())};
@@ -55,6 +61,12 @@ function changed() {
 }
 $('length').addEventListener('input', changed);
 $('length-range').addEventListener('input', () => { $('length').value = $('length-range').value; changed(); });
+[['length-down', -1], ['length-up', 1]].forEach(([id, delta]) => $(id).addEventListener('click', () => {
+  const next = stepLength($('length').valueAsNumber, $('length-range').valueAsNumber, delta);
+  if (next === $('length').valueAsNumber) return;
+  $('length').value = next;
+  changed();
+}));
 checkboxes.forEach(input => input.addEventListener('change', () => {
   if (!checkboxes.some(item => item.checked)) {
     input.checked = true;
@@ -99,6 +111,7 @@ async function init() {
   catch { $('storage-note').textContent = t('loadFailed'); }
   $('length').value = $('length-range').value = saved.length;
   checkboxes.forEach(input => { input.checked = saved[input.name]; });
+  updateSteppers();
   ready = true;
   generate();
 }

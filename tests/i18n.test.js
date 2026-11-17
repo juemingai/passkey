@@ -47,3 +47,15 @@ for (const locale of ['en', 'zh-CN', 'fr']) {
     delete globalThis.chrome;
   });
 }
+test('刷新按钮只放大图标，不放大本地化文字', async () => {
+  const css = await read('popup.css');
+  assert.doesNotMatch(css, /\.secondary span\s*\{/);
+  assert.match(css, /\.secondary span\[aria-hidden\]\s*\{[^}]*font-size:\d+px/);
+  assert.match(html, /id="refresh"[^>]*><span aria-hidden="true">↻<\/span> <span data-i18n="refresh">/);
+});
+test('长度输入框两侧提供可本地化的加减按钮', () => {
+  for (const [id, key] of [['length-down', 'decreaseLength'], ['length-up', 'increaseLength']]) {
+    assert.match(html, new RegExp(`id="${id}"[^>]*aria-controls="length"[^>]*data-i18n-aria-label="${key}"`));
+  }
+  assert.match(html, /id="length-down"[^>]*>−<\/button><input id="length"[^>]*><button type="button" id="length-up"/);
+});
