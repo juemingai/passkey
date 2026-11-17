@@ -56,6 +56,10 @@ Manifest V3，原生 HTML/CSS/ES Modules。随机源为 Web Crypto `crypto.getRa
 
 仅申请 `storage`（保存偏好）和 `clipboardWrite`（用户主动复制）权限；不申请站点权限。所有代码与资源随扩展提供。
 
+## 图标
+
+`design/icons/` 存放各尺寸图标的 SVG 源文件，`extension/icons/` 中的 PNG 由其按原尺寸导出。128 保留四周 16px 透明边距（商店规范）；48、32、16 裁掉边距并加粗星号笔画，保证小尺寸可辨认。修改图标时先改 SVG，再重新导出对应 PNG。
+
 ## 许可证
 
 [MIT](LICENSE)
