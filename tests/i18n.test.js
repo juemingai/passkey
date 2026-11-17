@@ -59,3 +59,9 @@ test('长度输入框两侧提供可本地化的加减按钮', () => {
   }
   assert.match(html, /id="length-down"[^>]*>−<\/button><input id="length"[^>]*><button type="button" id="length-up"/);
 });
+test('Manifest 只申请最小权限', async () => {
+  const manifest = JSON.parse(await read('manifest.json'));
+  assert.deepEqual(manifest.permissions, ['storage']);
+  assert.equal(manifest.host_permissions, undefined);
+  assert.equal(manifest.optional_permissions, undefined);
+});

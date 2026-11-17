@@ -4,8 +4,7 @@
   "description": "__MSG_extensionDescription__",
   "version": "1.0.0",
   "permissions": [
-    "storage",
-    "clipboardWrite"
+    "storage"
   ],
   "action": {
     "default_popup": "popup.html",
