@@ -1,6 +1,9 @@
 {
   "extensionName": {
-    "message": "Password Generator"
+    "message": "YuNuo – Password & API Key Generator"
+  },
+  "brandName": {
+    "message": "YuNuo"
   },
   "extensionDescription": {
     "message": "Generate passwords and sk- API keys locally. Copy or refresh in one click."

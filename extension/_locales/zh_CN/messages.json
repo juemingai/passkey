@@ -1,6 +1,9 @@
 {
   "extensionName": {
-    "message": "密码生成器"
+    "message": "YuNuo – 密码与 API Key 生成器"
+  },
+  "brandName": {
+    "message": "YuNuo"
   },
   "extensionDescription": {
     "message": "在本地安全生成密码与 sk- API Key，一键复制，随时刷新。"
