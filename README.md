@@ -68,6 +68,10 @@ Manifest V3，原生 HTML/CSS/ES Modules。随机源为 Web Crypto `crypto.getRa
 
 `design/store/` 存放 Chrome 应用商店素材，中英文各一套：截图 `screenshot-<语言>-<模式>.png`（1280×800）和宣传小图 `promo-small-<语言>.png`（440×280）。截图中的弹窗是插件真实页面，文案和排版在 `design/store/src/`。界面或文案修改后，在 macOS 上运行 `sh design/store/build.sh` 重新导出（需要 Google Chrome 和 Python 3）。
 
+## 隐私
+
+不收集、不上传任何数据，详见 [隐私政策](PRIVACY.md)。上架时在开发者后台「隐私权」页面的隐私政策字段填写：<https://github.com/juemingai/passkey/blob/main/PRIVACY.md>
+
 ## 许可证
 
 [MIT](LICENSE)
