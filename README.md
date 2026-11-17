@@ -55,3 +55,7 @@ npm test
 Manifest V3，原生 HTML/CSS/ES Modules。随机源为 Web Crypto `crypto.getRandomValues()`；拒绝不完整索引桶以消除取模偏差，密码候选串不满足类型覆盖时重新采样。
 
 仅申请 `storage`（保存偏好）和 `clipboardWrite`（用户主动复制）权限；不申请站点权限。所有代码与资源随扩展提供。
+
+## 许可证
+
+[MIT](LICENSE)
