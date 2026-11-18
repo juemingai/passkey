@@ -53,12 +53,13 @@ YuNuo 在浏览器本地生成高强度密码和 sk- 格式的 API Key，任何�
 | 字段 | 填写内容 |
 |------|------|
 | 类别 | 开发者工具（Developer Tools）；没有该选项时选「工具」 |
-| 语言 | 默认英语，另加「中文（简体）」，每种语言分别上传对应截图和文案 |
+| 语言 | 默认英语，另加「中文（简体）」，每种语言分别填写详细说明；先保存草稿再切换语言 |
 | 商店图标 | `extension/icons/icon128.png` |
-| 截图 | `design/store/screenshot-<语言>-password.png`、`screenshot-<语言>-api.png` |
-| 小型宣传图块 | `design/store/promo-small-<语言>.png` |
-| 官方网址 | `https://github.com/juemingai/passkey` |
-| 支持网址 | `https://github.com/juemingai/passkey/issues` |
+| 截图 | 后台只有「全球通用的屏幕截图」，所有语言共用：`design/store/screenshot-en-password.png`、`screenshot-en-api.png` |
+| 小型宣传图块 | 同为全球通用：`design/store/promo-small-en.png` |
+| 官方网址 | 留空。该字段只接受在 Google Search Console 验证过所有权的网站，填 GitHub 地址会报错 |
+| 首页网址 | `https://github.com/juemingai/passkey` |
+| 支持信息页面网址 | `https://github.com/juemingai/passkey/issues` |
 
 ## 二、隐私权（Privacy practices）
 
